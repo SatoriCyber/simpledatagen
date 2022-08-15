@@ -23,6 +23,7 @@ quotecomma			= "\","
 comma				= ","
 newline				= "\n"
 
+
 #these are our required core columns for the people.csv file
 coreColumns = [
 'customer_id',
@@ -37,11 +38,14 @@ coreColumns = [
 'county',
 'state',
 'postal_code',
-'birth_dt'
+'birth_dt',
+'is_deleted'
 ]
 
-#the following four handlers deal with all of the above columns
+
+#the following handlers deal with all of the above columns
 handlers = {
+"is_deleted" : "isDeletedHandler",
 "customer_id" : "nextId",
 "identity_bundle" : "coreIdentityBundle",
 "geolocation_bundle" : "coreGeolocationBundle",
@@ -125,7 +129,18 @@ def birthDateHandler():
 	random_birthdate = earliest_possible_birthday + datetime.timedelta(days=random.randint(5096,27300))		
 	return random_birthdate
 
+def isDeletedHandler():
+	# 15% of our records will be marked as isDeleted
+	deleteflag = 1 if randomlySelected(2, 15) else 0
+	return deleteflag	
+
 
 def handlerMap(type):
 	return globals()[handlers.get(type)]()
+
+
+#print(handlers.get("is_deleted"))
+
+#testisDeleted = globals()[handlers.get("deleted2")]()
+#print(testisDeleted)
 

@@ -66,6 +66,7 @@ def createData(headers: bool, rows: int, buildtransactions: bool, *args) -> str:
 		geolocation_bundle = c.handlerMap("geolocation_bundle")
 		newid = c.handlerMap("customer_id")
 		birthdate = str(c.handlerMap("birth_dt"))
+		is_deleted = c.handlerMap("is_deleted")
 
 		# 1 the ID
 		newrow += c.quote + newid + c.quotecomma								
@@ -77,12 +78,14 @@ def createData(headers: bool, rows: int, buildtransactions: bool, *args) -> str:
 			newrow += c.quote + geolocation_bundle[item] + c.quotecomma
 		# 4 birthdate
 		newrow += c.quote + birthdate + c.quotecomma	
-
-		# 5 for any extra columns you have defined, call their handler in helpers.py
+		# 5 isDeleted flag, to emulate salesforce or other systems that mark records as deleted
+		newrow += str(is_deleted) + c.comma	
+		
+		# 6 for any extra columns you have defined, call their handler in helpers.py
 		for idx, item in enumerate(extraColumns):					
 			newrow += c.quote + h.extraHandlerMap(item) + c.quote
 			newrow += c.comma if idx+1 != len(extraColumns) else ""
-		#6 add a newline if not last line
+		#7 add a newline if not last line
 		if rowcount != rows:														
 			newrow += c.newline
 		
@@ -103,3 +106,4 @@ def createData(headers: bool, rows: int, buildtransactions: bool, *args) -> str:
 		rowcount+=1
 
 	return listOfNewRows, listOfNewTransactions, listOfNewSocialInteractions
+

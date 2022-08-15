@@ -19,6 +19,7 @@ extrahandlers = {
 "social_timestamp" 		: "SocialTimestampHandler",
 "social_ip" 			: "SocialIPAddressHandler",
 "social_sha256" 		: "SocialShaHandler",
+"hashtags"				: "HashtagHandler",
 "social_uuid4" 			: "SocialUuid4Handler"
 }
 
@@ -59,8 +60,21 @@ def SocialShaHandler():
 def SocialUuid4Handler():
 	return random.choice(i.df_ip_addresses)
 
+def HashtagHandler():
+	if c.randomlySelected(11, 15):
+		verb = random.choice(i.df_verbs)
+		noun = random.choice(i.df_nouns)
+		noun2 = random.choice(i.df_nouns)
+		return "#" + noun + ", #" + verb + "_" + noun + ", #" + noun2 + "_" + noun
+	else:
+		verb = random.choice(i.df_verbs)
+		noun = random.choice(i.df_nouns)
+		return "#" + noun + ", #" + verb + "_" + noun
+
+
 
 # our handler map
 def extraHandlerMap(type):
 	return globals()[extrahandlers.get(type)]()
+
 

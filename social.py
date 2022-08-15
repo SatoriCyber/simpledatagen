@@ -7,6 +7,7 @@ import helpers as h
 columnData = [
 'social_customer_id',
 'social_email',
+'hashtags',
 'social_last_uri',
 'social_timestamp',
 'social_ip',

@@ -12,6 +12,7 @@ CREATE TABLE people (
     state varchar(255),
     postal_code varchar(255),
     birth_dt date,
+    is_deleted boolean,
     job_type varchar(255),
     account_type varchar(255),
     phone_number varchar(255),
@@ -22,9 +23,9 @@ CREATE TABLE people (
     )
 
 CREATE TABLE transactions (
-    customer_id varchar(255),
+    trans_customer_id varchar(255),
     orderid varchar(255),
-    purchasedatetime varchar(255),
+    purchasedatetime datetime,
     transactiontotal decimal,
     numberofitems int,
     productcode varchar(255),
@@ -35,6 +36,7 @@ CREATE TABLE transactions (
 CREATE TABLE social (
     social_customer_id varchar(255),
     social_email varchar(255),
+    social_hashtags varchar(255),
     social_last_uri varchar(255),
     social_timestamp varchar(255),
     social_ip varchar(255),
