@@ -22,6 +22,11 @@ quote				= "\""
 quotecomma			= "\","
 comma				= ","
 newline				= "\n"
+openBracket			= "["
+closeBracket		= "]"
+openCurly			= "{"
+closeCurly			= "}"
+colon				= ":"
 
 
 #these are our required core columns for the people.csv file

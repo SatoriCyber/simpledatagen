@@ -1,6 +1,6 @@
 ## simpledatagen - lightweight data generator for various uses
 
-##### This app builds three files - people.csv, transactions.csv and social.csv - with a customer primary key between them. The premise is that you would then load this data into your favorite database or data science tool.
+##### This app builds four files - people.csv, people.json, transactions.csv and social.csv - with a customer primary key between them. The premise is that you would then load this data into your favorite database or data science tool.
 
 - There are text inputs for various random data generation, in the './inputs' directory.
 
@@ -21,6 +21,15 @@
 # args: (csv headers?, how many rows?, create transactions?, max transactions per person?)
 args = (True, 1000, True, 10)
 ```
+
+### people.json
+
+Experimental: we are also generating a json file for use with MongoDB or similar. Once generated, you can run something like:
+```
+db.YOUR_COLLECTION.insertMany()
+```
+
+Note: this part of the code is hardwired for the fields that ship with this repo. If you deviate or add fields, you'll need to tinker with people.createJsonData() accordingly.
 
 ### flaskserver.py
 
