@@ -5,30 +5,32 @@ import people
 t_start = time.time()
 
 # args: (user csv headers?, how many people?, create transactions?, how many transactions?)
-args = (True, 10000, True, 10)
+args = (True, 3, True, 4)
 
-newdata = people.createData(*args)
-
-newJsonData = people.createJsonData(*args)
+newdata = people.create_data(*args)
 
 # just to remind, people.createData returns two elements in an array,
 # one for customers and one for their transactions
 
-#with open('people_v2.csv', 'w') as f:
-#	f.write(newdata[0])
-#	print("finished writing people data")
+with open('people_v2.csv', 'w') as f:
+	f.write(newdata[0])
+	print("finished writing people data")
 
 with open('people_v2.json', 'w') as f:
-	f.write(newJsonData[0])
+	f.write(newdata[1])
 	print("finished writing people JSON data")
 
-#with open('transactions_v2.csv', 'w') as f:
-#	f.write(newdata[1])
-#	print("finished writing transaction data")
+with open('transactions_v2.csv', 'w') as f:
+	f.write(newdata[2])
+	print("finished writing transaction data")
 
-#with open('social_v2.csv', 'w') as f:
-#	f.write(newdata[2])
-#	print("finished writing social interaction data")
+with open('transactions_v2.json', 'w') as f:
+	f.write(newdata[3])
+	print("finished writing JSON transaction data")
+
+with open('social_v2.csv', 'w') as f:
+	f.write(newdata[4])
+	print("finished writing social interaction data")
 
 t_end = time.time()
 totaltime = t_end-t_start

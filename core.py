@@ -27,7 +27,7 @@ closeBracket		= "]"
 openCurly			= "{"
 closeCurly			= "}"
 colon				= ":"
-
+tab					= "\t"
 
 #these are our required core columns for the people.csv file
 coreColumns = [

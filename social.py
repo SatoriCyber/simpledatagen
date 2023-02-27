@@ -4,7 +4,7 @@ import datetime
 import core as c
 import helpers as h
 
-columnData = [
+column_data = [
 'social_customer_id',
 'social_email',
 'hashtags',
@@ -16,7 +16,7 @@ columnData = [
 ]
 
 
-def generateSocialInteractions(customerid: str, maxinteractions: int, email: str):
+def generate_social(customerid: str, maxinteractions: int, email: str):
 
 	rowcount = 0
 	social = ""
@@ -26,10 +26,10 @@ def generateSocialInteractions(customerid: str, maxinteractions: int, email: str
 		newrow += c.quote + customerid + c.quotecomma
 		newrow += c.quote + email + c.quotecomma
 
-		for idx, item in enumerate(columnData):	
+		for idx, item in enumerate(column_data):	
 			if item != "social_customer_id" and item != "social_email":
 				newrow += c.quote + h.extraHandlerMap(item) + c.quote
-				newrow += c.comma if idx+1 != len(columnData) else ""
+				newrow += c.comma if idx+1 != len(column_data) else ""
 		#6 newline if not last line
 		if rowcount != maxinteractions:														
 			newrow+= c.newline
