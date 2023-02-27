@@ -150,7 +150,7 @@ def create_data(headers: bool, rows: int, buildtransactions: bool, *args) -> str
 		if buildtransactions:
 
 			maxrows = int(args[0])
-			random_num_transactions = random.randint(1,5)
+			random_num_transactions = random.randint(1,maxrows)
 
 			#generate transaction data
 			transaction_data += transactions.generate_transactions(newid, random_num_transactions)
